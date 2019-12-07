@@ -3,12 +3,15 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
+use ApiPlatform\Core\Annotation\ApiResource;
 
 /**
  * ModxSiteTmplvars
  *
  * @ORM\Table(name="modx_site_tmplvars", uniqueConstraints={@ORM\UniqueConstraint(name="name", columns={"name"})}, indexes={@ORM\Index(name="category", columns={"category"}), @ORM\Index(name="rank", columns={"rank"}), @ORM\Index(name="locked", columns={"locked"}), @ORM\Index(name="static", columns={"static"})})
  * @ORM\Entity
+ * @ApiResource
  */
 class ModxSiteTmplvars
 {
@@ -46,6 +49,7 @@ class ModxSiteTmplvars
      * @var string
      *
      * @ORM\Column(name="name", type="string", length=50, nullable=false)
+     * @Groups({"tv"})
      */
     private $name = '';
 

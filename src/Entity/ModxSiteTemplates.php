@@ -3,12 +3,14 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use ApiPlatform\Core\Annotation\ApiResource;
 
 /**
  * ModxSiteTemplates
  *
  * @ORM\Table(name="modx_site_templates", uniqueConstraints={@ORM\UniqueConstraint(name="templatename", columns={"templatename"})}, indexes={@ORM\Index(name="category", columns={"category"}), @ORM\Index(name="static", columns={"static"}), @ORM\Index(name="locked", columns={"locked"})})
  * @ORM\Entity
+ * @ApiResource
  */
 class ModxSiteTemplates
 {
