@@ -8,6 +8,8 @@ Used:
 
 ![MODX API - screenshot #1](https://github.com/andchir/modx2-api/blob/master/resources/screenshots/screenshot_001.png?raw=true "MODX API - screenshot #1")
 
+![MODX API - screenshot #4](https://github.com/andchir/modx2-api/blob/master/resources/screenshots/screenshot_004.png?raw=true "MODX API - screenshot #4")
+
 ![MODX API - screenshot #2](https://github.com/andchir/modx2-api/blob/master/resources/screenshots/screenshot_002.png?raw=true "MODX API - screenshot #2")
 
 ![MODX API - screenshot #3](https://github.com/andchir/modx2-api/blob/master/resources/screenshots/screenshot_003.png?raw=true "MODX API - screenshot #3")
