@@ -10,6 +10,8 @@ Used:
 
 ![MODX API - screenshot #2](https://github.com/andchir/modx2-api/blob/master/resources/screenshots/screenshot_002.png?raw=true "MODX API - screenshot #2")
 
+![MODX API - screenshot #3](https://github.com/andchir/modx2-api/blob/master/resources/screenshots/screenshot_003.png?raw=true "MODX API - screenshot #3")
+
 ## How to install
 
 Download and upload to your server or clone the repository.
