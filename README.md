@@ -32,7 +32,11 @@ Used:
 5. Configure a Web Server:  
 [https://symfony.com/doc/current/setup/web_server_configuration.html](https://symfony.com/doc/current/setup/web_server_configuration.html)
 
-6. Create an administrator with the email "admin@admin.com" and the password "admin" (you can change it later):
+6. Create users table in DB:
+    ~~~
+    bin/console doctrine:schema:create
+    ~~~
+    Create an administrator with the email "admin@admin.com" and the password "admin" (you can change it later):
     ~~~
     php bin/console doctrine:fixtures:load --append --group=UserFixtures
     ~~~
