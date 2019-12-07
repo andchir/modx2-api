@@ -6,9 +6,12 @@
         <p>
             <a href="{{ path('api_entrypoint') }}">API</a>
         </p>
+        <p>
+            <a href="{{ path('app_logout') }}">Log Out</a>
+        </p>
     {% else %}
         <p>
-            <a href="{{ path('app_login') }}">Log in</a>
+            <a href="{{ path('app_login') }}">Log In</a>
         </p>
     {% endif %}
 

@@ -17,7 +17,7 @@ security:
         api:
             pattern: ^/api/
             stateless: true
-            anonymous: true
+            anonymous: false
             provider: app_user_provider
             guard:
                 authenticators:
