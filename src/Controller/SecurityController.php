@@ -2,10 +2,15 @@
 
 namespace App\Controller;
 
+use App\Entity\User;
 use App\Form\Type\LoginType;
+use App\Form\Type\UpdateProfileType;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 
 class SecurityController extends AbstractController
@@ -15,7 +20,7 @@ class SecurityController extends AbstractController
      * @param AuthenticationUtils $authenticationUtils
      * @return Response
      */
-    public function login(AuthenticationUtils $authenticationUtils): Response
+    public function loginAction(AuthenticationUtils $authenticationUtils): Response
     {
         if ($this->getUser()) {
             return $this->redirectToRoute('api_entrypoint');
@@ -30,6 +35,56 @@ class SecurityController extends AbstractController
             'form' => $form->createView(),
             'last_username' => $lastUsername,
             'error' => $error
+        ]);
+    }
+
+    /**
+     * @Route("/profile", name="app_profile")
+     * @param Request $request
+     * @param UserPasswordEncoderInterface $passwordEncoder
+     * @param EntityManagerInterface $em
+     * @return Response
+     */
+    public function updateProfileAction(
+        Request $request,
+        UserPasswordEncoderInterface $passwordEncoder,
+        EntityManagerInterface $em): Response
+    {
+        $this->denyAccessUnlessGranted('ROLE_USER');
+
+        $form = $this->createForm(UpdateProfileType::class, [
+            'email' => $this->getUser()->getEmail()
+        ]);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+
+            /** @var User $user */
+            $user = $this->getUser();
+
+            $formData = $form->getData();
+            if (!empty($formData['email'])) {
+                $user->setEmail($formData['email']);
+            }
+            if (!empty($formData['password'])) {
+                $user->setPassword($passwordEncoder->encodePassword(
+                    $user,
+                    $formData['password']
+                ));
+            }
+
+            $em->flush();
+
+            $this->addFlash(
+                'notice',
+                'Your changes were saved!'
+            );
+
+            return $this->redirectToRoute('app_profile');
+        }
+
+        return $this->render('security/login.html.twig', [
+            'form' => $form->createView()
         ]);
     }
 

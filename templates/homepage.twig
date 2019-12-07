@@ -11,12 +11,17 @@
                 <hr>
 
                 {% if is_granted('ROLE_USER') %}
-                    <p>
-                        <a href="{{ path('api_entrypoint') }}">API</a>
-                    </p>
-                    <p>
-                        <a href="{{ path('app_logout') }}">Log Out</a>
-                    </p>
+                    <ul>
+                        <li>
+                            <a href="{{ path('api_entrypoint') }}">API</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('app_profile') }}">Edit profile</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('app_logout') }}">Log Out</a>
+                        </li>
+                    </ul>
                 {% else %}
 
                     <div class="row justify-content-md-center">

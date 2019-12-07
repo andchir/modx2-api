@@ -15,6 +15,12 @@
                         <h1>{{ app_name }}</h1>
                         <hr>
 
+                        {% for message in app.flashes('notice') %}
+                            <div class="alert alert-info">
+                                {{ message }}
+                            </div>
+                        {% endfor %}
+
                         {{ form(form) }}
 
                         <hr>
