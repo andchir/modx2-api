@@ -1,4 +1,4 @@
-# MODX Revolution API
+# MODX Revolution RESTful API
 
 Used:
 - https://symfony.com/
