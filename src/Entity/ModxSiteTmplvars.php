@@ -57,6 +57,7 @@ class ModxSiteTmplvars
      * @var string
      *
      * @ORM\Column(name="caption", type="string", length=80, nullable=false)
+     * @Groups({"tv"})
      */
     private $caption = '';
 
