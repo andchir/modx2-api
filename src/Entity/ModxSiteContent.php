@@ -3,12 +3,14 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use ApiPlatform\Core\Annotation\ApiResource;
 
 /**
  * ModxSiteContent
  *
  * @ORM\Table(name="modx_site_content", indexes={@ORM\Index(name="class_key", columns={"class_key"}), @ORM\Index(name="published", columns={"published"}), @ORM\Index(name="uri", columns={"uri"}), @ORM\Index(name="unpub_date", columns={"unpub_date"}), @ORM\Index(name="hide_children_in_tree", columns={"hide_children_in_tree"}), @ORM\Index(name="isfolder", columns={"isfolder"}), @ORM\Index(name="cache_refresh_idx", columns={"parent", "menuindex", "id"}), @ORM\Index(name="menuindex", columns={"menuindex"}), @ORM\Index(name="cacheable", columns={"cacheable"}), @ORM\Index(name="hidemenu", columns={"hidemenu"}), @ORM\Index(name="alias", columns={"alias"}), @ORM\Index(name="context_key", columns={"context_key"}), @ORM\Index(name="pub_date", columns={"pub_date"}), @ORM\Index(name="uri_override", columns={"uri_override"}), @ORM\Index(name="parent", columns={"parent"}), @ORM\Index(name="show_in_tree", columns={"show_in_tree"}), @ORM\Index(name="template", columns={"template"}), @ORM\Index(name="searchable", columns={"searchable"}), @ORM\Index(name="content_ft_idx", columns={"pagetitle", "longtitle", "description", "introtext", "content"})})
  * @ORM\Entity
+ * @ApiResource
  */
 class ModxSiteContent
 {

@@ -3,12 +3,14 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use ApiPlatform\Core\Annotation\ApiResource;
 
 /**
  * ModxUsers
  *
  * @ORM\Table(name="modx_users", uniqueConstraints={@ORM\UniqueConstraint(name="username", columns={"username"})}, indexes={@ORM\Index(name="class_key", columns={"class_key"}), @ORM\Index(name="primary_group", columns={"primary_group"}), @ORM\Index(name="remote_key", columns={"remote_key"})})
  * @ORM\Entity
+ * @ApiResource
  */
 class ModxUsers
 {
