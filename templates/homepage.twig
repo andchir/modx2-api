@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    {% if is_granted('ROLE_USER') %}
+        <p>
+            <a href="{{ path('api_entrypoint') }}">API</a>
+        </p>
+    {% else %}
+        <p>
+            <a href="{{ path('app_login') }}">Log in</a>
+        </p>
+    {% endif %}
+
+{% endblock %}
