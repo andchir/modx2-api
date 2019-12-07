@@ -12,7 +12,7 @@ use Symfony\Component\Serializer\Annotation\Groups;
  * @ORM\Table(name="modx_users", uniqueConstraints={@ORM\UniqueConstraint(name="username", columns={"username"})}, indexes={@ORM\Index(name="class_key", columns={"class_key"}), @ORM\Index(name="primary_group", columns={"primary_group"}), @ORM\Index(name="remote_key", columns={"remote_key"})})
  * @ORM\Entity
  * @ApiResource(
- *     normalizationContext={"groups"={"read"}},
+ *     normalizationContext={"groups"={"read", "attributes"}},
  *     denormalizationContext={"groups"={"write"}}
  * )
  */
@@ -128,7 +128,7 @@ class ModxUsers
      * @var ModxUserAttributes
      *
      * @ORM\OneToOne(targetEntity="ModxUserAttributes", mappedBy="user")
-     * @Groups({"read"})
+     * @Groups({"read", "attributes"})
      */
     private $attributes;
 

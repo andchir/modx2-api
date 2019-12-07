@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use ApiPlatform\Core\Annotation\ApiResource;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * ModxUserAttributes
@@ -34,6 +35,7 @@ class ModxUserAttributes
      * @var string
      *
      * @ORM\Column(name="fullname", type="string", length=100, nullable=false)
+     * @Groups({"attributes"})
      */
     private $fullname = '';
 
@@ -41,6 +43,7 @@ class ModxUserAttributes
      * @var string
      *
      * @ORM\Column(name="email", type="string", length=100, nullable=false)
+     * @Groups({"attributes"})
      */
     private $email = '';
 
@@ -48,6 +51,7 @@ class ModxUserAttributes
      * @var string
      *
      * @ORM\Column(name="phone", type="string", length=100, nullable=false)
+     * @Groups({"attributes"})
      */
     private $phone = '';
 
@@ -55,6 +59,7 @@ class ModxUserAttributes
      * @var string
      *
      * @ORM\Column(name="mobilephone", type="string", length=100, nullable=false)
+     * @Groups({"attributes"})
      */
     private $mobilephone = '';
 
@@ -62,6 +67,7 @@ class ModxUserAttributes
      * @var bool
      *
      * @ORM\Column(name="blocked", type="boolean", nullable=false)
+     * @Groups({"attributes"})
      */
     private $blocked = '0';
 
@@ -132,6 +138,7 @@ class ModxUserAttributes
      * @var string
      *
      * @ORM\Column(name="address", type="text", length=65535, nullable=false)
+     * @Groups({"attributes"})
      */
     private $address;
 
@@ -139,6 +146,7 @@ class ModxUserAttributes
      * @var string
      *
      * @ORM\Column(name="country", type="string", length=191, nullable=false)
+     * @Groups({"attributes"})
      */
     private $country = '';
 
@@ -146,6 +154,7 @@ class ModxUserAttributes
      * @var string
      *
      * @ORM\Column(name="city", type="string", length=191, nullable=false)
+     * @Groups({"attributes"})
      */
     private $city = '';
 
@@ -153,6 +162,7 @@ class ModxUserAttributes
      * @var string
      *
      * @ORM\Column(name="state", type="string", length=25, nullable=false)
+     * @Groups({"attributes"})
      */
     private $state = '';
 
@@ -160,6 +170,7 @@ class ModxUserAttributes
      * @var string
      *
      * @ORM\Column(name="zip", type="string", length=25, nullable=false)
+     * @Groups({"attributes"})
      */
     private $zip = '';
 
@@ -174,6 +185,7 @@ class ModxUserAttributes
      * @var string
      *
      * @ORM\Column(name="photo", type="string", length=191, nullable=false)
+     * @Groups({"attributes"})
      */
     private $photo = '';
 
@@ -181,6 +193,7 @@ class ModxUserAttributes
      * @var string
      *
      * @ORM\Column(name="comment", type="text", length=65535, nullable=false)
+     * @Groups({"attributes"})
      */
     private $comment;
 
@@ -188,6 +201,7 @@ class ModxUserAttributes
      * @var string
      *
      * @ORM\Column(name="website", type="string", length=191, nullable=false)
+     * @Groups({"attributes"})
      */
     private $website = '';
 
