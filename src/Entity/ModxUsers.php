@@ -4,13 +4,17 @@ namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use ApiPlatform\Core\Annotation\ApiResource;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * ModxUsers
  *
  * @ORM\Table(name="modx_users", uniqueConstraints={@ORM\UniqueConstraint(name="username", columns={"username"})}, indexes={@ORM\Index(name="class_key", columns={"class_key"}), @ORM\Index(name="primary_group", columns={"primary_group"}), @ORM\Index(name="remote_key", columns={"remote_key"})})
  * @ORM\Entity
- * @ApiResource
+ * @ApiResource(
+ *     normalizationContext={"groups"={"read"}},
+ *     denormalizationContext={"groups"={"write"}}
+ * )
  */
 class ModxUsers
 {
@@ -20,6 +24,7 @@ class ModxUsers
      * @ORM\Column(name="id", type="integer", nullable=false, options={"unsigned"=true})
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
+     * @Groups({"read", "write"})
      */
     private $id;
 
@@ -27,6 +32,7 @@ class ModxUsers
      * @var string
      *
      * @ORM\Column(name="username", type="string", length=100, nullable=false)
+     * @Groups({"read", "write"})
      */
     private $username = '';
 
@@ -34,6 +40,7 @@ class ModxUsers
      * @var string
      *
      * @ORM\Column(name="password", type="string", length=255, nullable=false)
+     * @Groups("write")
      */
     private $password = '';
 
@@ -41,6 +48,7 @@ class ModxUsers
      * @var string
      *
      * @ORM\Column(name="cachepwd", type="string", length=255, nullable=false)
+     * @Groups("write")
      */
     private $cachepwd = '';
 
@@ -48,6 +56,7 @@ class ModxUsers
      * @var string
      *
      * @ORM\Column(name="class_key", type="string", length=100, nullable=false, options={"default"="modUser"})
+     * @Groups({"read", "write"})
      */
     private $classKey = 'modUser';
 
@@ -55,6 +64,7 @@ class ModxUsers
      * @var bool
      *
      * @ORM\Column(name="active", type="boolean", nullable=false, options={"default"="1"})
+     * @Groups({"read", "write"})
      */
     private $active = '1';
 
@@ -62,6 +72,7 @@ class ModxUsers
      * @var string|null
      *
      * @ORM\Column(name="remote_key", type="string", length=191, nullable=true)
+     * @Groups({"read", "write"})
      */
     private $remoteKey;
 
@@ -69,6 +80,7 @@ class ModxUsers
      * @var string|null
      *
      * @ORM\Column(name="remote_data", type="text", length=65535, nullable=true)
+     * @Groups({"read", "write"})
      */
     private $remoteData;
 
@@ -76,6 +88,7 @@ class ModxUsers
      * @var string
      *
      * @ORM\Column(name="hash_class", type="string", length=100, nullable=false, options={"default"="hashing.modNative"})
+     * @Groups("write")
      */
     private $hashClass = 'hashing.modNative';
 
@@ -83,6 +96,7 @@ class ModxUsers
      * @var string
      *
      * @ORM\Column(name="salt", type="string", length=100, nullable=false)
+     * @Groups("write")
      */
     private $salt = '';
 
@@ -90,6 +104,7 @@ class ModxUsers
      * @var int
      *
      * @ORM\Column(name="primary_group", type="integer", nullable=false, options={"unsigned"=true})
+     * @Groups({"read", "write"})
      */
     private $primaryGroup = '0';
 
@@ -97,6 +112,7 @@ class ModxUsers
      * @var string|null
      *
      * @ORM\Column(name="session_stale", type="text", length=65535, nullable=true)
+     * @Groups({"read", "write"})
      */
     private $sessionStale;
 
@@ -104,6 +120,7 @@ class ModxUsers
      * @var bool
      *
      * @ORM\Column(name="sudo", type="boolean", nullable=false)
+     * @Groups({"read", "write"})
      */
     private $sudo = '0';
 
@@ -111,6 +128,7 @@ class ModxUsers
      * @var int
      *
      * @ORM\Column(name="createdon", type="integer", nullable=false)
+     * @Groups({"read", "write"})
      */
     private $createdon = '0';
 
