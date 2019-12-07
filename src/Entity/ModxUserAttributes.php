@@ -3,12 +3,14 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use ApiPlatform\Core\Annotation\ApiResource;
 
 /**
  * ModxUserAttributes
  *
  * @ORM\Table(name="modx_user_attributes", uniqueConstraints={@ORM\UniqueConstraint(name="internalKey", columns={"internalKey"})})
  * @ORM\Entity
+ * @ApiResource
  */
 class ModxUserAttributes
 {
@@ -195,6 +197,14 @@ class ModxUserAttributes
      * @ORM\Column(name="extended", type="text", length=65535, nullable=true)
      */
     private $extended;
+
+    /**
+     * @var ModxUsers
+     *
+     * @ORM\OneToOne(targetEntity="ModxUsers", mappedBy="attributes")
+     * @ORM\JoinColumn(name="internalKey", referencedColumnName="id")
+     */
+    private $user;
 
     public function getId(): ?int
     {
@@ -497,6 +507,24 @@ class ModxUserAttributes
     public function setExtended(?string $extended): self
     {
         $this->extended = $extended;
+
+        return $this;
+    }
+
+    public function getUser(): ?ModxUsers
+    {
+        return $this->user;
+    }
+
+    public function setUser(?ModxUsers $user): self
+    {
+        $this->user = $user;
+
+        // set (or unset) the owning side of the relation if necessary
+        $newAttributes = null === $user ? null : $this;
+        if ($user->getAttributes() !== $newAttributes) {
+            $user->setAttributes($newAttributes);
+        }
 
         return $this;
     }

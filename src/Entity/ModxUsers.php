@@ -125,6 +125,14 @@ class ModxUsers
     private $sudo = '0';
 
     /**
+     * @var ModxUserAttributes
+     *
+     * @ORM\OneToOne(targetEntity="ModxUserAttributes", mappedBy="user")
+     * @Groups({"read"})
+     */
+    private $attributes;
+
+    /**
      * @var int
      *
      * @ORM\Column(name="createdon", type="integer", nullable=false)
@@ -289,6 +297,18 @@ class ModxUsers
     public function setCreatedon(int $createdon): self
     {
         $this->createdon = $createdon;
+
+        return $this;
+    }
+
+    public function getAttributes(): ?ModxUserAttributes
+    {
+        return $this->attributes;
+    }
+
+    public function setAttributes(?ModxUserAttributes $attributes): self
+    {
+        $this->attributes = $attributes;
 
         return $this;
     }
