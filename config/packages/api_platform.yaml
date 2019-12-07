@@ -1,4 +1,7 @@
 api_platform:
+    description: 'MODX Revolution API'
+    version: '1.0.0'
+    show_webby: true
     mapping:
         paths: ['%kernel.project_dir%/src/Entity']
     patch_formats:
