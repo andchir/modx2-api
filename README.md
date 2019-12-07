@@ -18,6 +18,9 @@ Used:
 
 Download and upload to your server or clone the repository.
 
+Configuring a Web Server:  
+[https://symfony.com/doc/current/setup/web_server_configuration.html](https://symfony.com/doc/current/setup/web_server_configuration.html)
+
 Create an administrator with the mail address "admin@admin.com" and the password "admin" (you can change it later):
 ~~~
 php bin/console doctrine:fixtures:load --append --group=UserFixtures
