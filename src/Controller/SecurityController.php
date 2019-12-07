@@ -12,6 +12,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
+use Symfony\Component\Validator\Validator\ValidatorInterface;
 
 class SecurityController extends AbstractController
 {
@@ -42,12 +43,14 @@ class SecurityController extends AbstractController
      * @Route("/profile", name="app_profile")
      * @param Request $request
      * @param UserPasswordEncoderInterface $passwordEncoder
+     * @param ValidatorInterface $validator
      * @param EntityManagerInterface $em
      * @return Response
      */
     public function updateProfileAction(
         Request $request,
         UserPasswordEncoderInterface $passwordEncoder,
+        ValidatorInterface $validator,
         EntityManagerInterface $em): Response
     {
         $this->denyAccessUnlessGranted('ROLE_USER');
@@ -65,6 +68,11 @@ class SecurityController extends AbstractController
             $formData = $form->getData();
             if (!empty($formData['email'])) {
                 $user->setEmail($formData['email']);
+                $errors = $validator->validate($user);
+                if (count($errors) > 0) {
+                    $this->addFlash('error', $errors->get(0)->getMessage());
+                    return $this->redirectToRoute('app_profile');
+                }
             }
             if (!empty($formData['password'])) {
                 $user->setPassword($passwordEncoder->encodePassword(
@@ -83,7 +91,7 @@ class SecurityController extends AbstractController
             return $this->redirectToRoute('app_profile');
         }
 
-        return $this->render('security/login.html.twig', [
+        return $this->render('security/profile.html.twig', [
             'form' => $form->createView()
         ]);
     }
